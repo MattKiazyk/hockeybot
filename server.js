@@ -12,11 +12,17 @@ var slapp = Slapp({
 
 require('beepboop-slapp-presence-polyfill')(slapp, { debug: true })
 
-var app = slapp.attachToExpress(express())
-
-app.get('/', function (req, res) {
-  res.send('Hello')
+slapp.message('^(hi|hello|hey).*', ['direct_mention', 'direct_message'], (msg, text, greeting) => {
+  msg
+    .say(`${greeting}, how are you?`)
+    .route('handleHowAreYou')  // where to route the next msg in the conversation
 })
 
-console.log('Listening on :' + process.env.PORT)
-app.listen(process.env.PORT)
+// register a route handler
+slapp.route('handleHowAreYou', (msg) => {
+  // respond with a random entry from array
+  msg.say(['Me too', 'Noted', 'That is interesting'])
+})
+
+// attach handlers to an Express app
+slapp.attachToExpress(require('express')()).listen(process.env.PORT)
