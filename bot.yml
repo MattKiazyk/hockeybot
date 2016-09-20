@@ -1,0 +1,7 @@
+name: HockeyBot
+description:
+email: matt.kiazyk@robotsandpencils.com
+slackscopes:
+  - bot
+  - commands
+  - reactions:write
