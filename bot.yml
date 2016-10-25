@@ -5,3 +5,11 @@ slackscopes:
   - bot
   - commands
   - reactions:write
+config:
+  - name: MYSPORTSFEED_USERNAME
+    friendly_name: MySportsFeed username
+    type: text
+  - name: MYSPORTSFEED_PASSWORD
+    friendly_name: MySportsFeed password
+    type: secret
+  
